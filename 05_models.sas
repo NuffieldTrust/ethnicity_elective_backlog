@@ -128,32 +128,32 @@ proc genmod data = yr2&proc_group.;
 		estimates          = m22c&proc_group.;
 run;
 
+/* We tried different model specifications, but ultimately ended up using the rate version, rather than the strata */
+/* proc genmod data = ys1&proc_group.; */
+/* 	class ethpop_broad4 (ref='White') period_year (ref='201920')  age_10 (ref = '50to59') gender (ref = 'F') / param=ref; */
+/* 	model observed = ethpop_broad4 period_year ethpop_broad4*period_year age_10 gender / dist=poisson link=log offset=log_pop; */
+/* 	estimate 'White 202021 v 201920' period_year 1 ethpop_broad4*period_year 0 0 0 0; */
+/* 	estimate 'Asian 202021 v 201920' period_year 1 ethpop_broad4*period_year 1 0 0 0; */
+/* 	estimate 'Black 202021 v 201920' period_year 1 ethpop_broad4*period_year 0 1 0 0; */
+/* 	estimate 'Mixed 202021 v 201920' period_year 1 ethpop_broad4*period_year 0 0 1 0; */
+/* 	estimate 'Other 202021 v 201920' period_year 1 ethpop_broad4*period_year 0 0 0 1; */
+/* 	ods output */
+/* 		parameterestimates = m31p&proc_group. */
+/* 		estimates          = m31c&proc_group.; */
+/* run; */
 
-proc genmod data = ys1&proc_group.;
-	class ethpop_broad4 (ref='White') period_year (ref='201920')  age_10 (ref = '50to59') gender (ref = 'F') / param=ref;
-	model observed = ethpop_broad4 period_year ethpop_broad4*period_year age_10 gender / dist=poisson link=log offset=log_pop;
-	estimate 'White 202021 v 201920' period_year 1 ethpop_broad4*period_year 0 0 0 0;
-	estimate 'Asian 202021 v 201920' period_year 1 ethpop_broad4*period_year 1 0 0 0;
-	estimate 'Black 202021 v 201920' period_year 1 ethpop_broad4*period_year 0 1 0 0;
-	estimate 'Mixed 202021 v 201920' period_year 1 ethpop_broad4*period_year 0 0 1 0;
-	estimate 'Other 202021 v 201920' period_year 1 ethpop_broad4*period_year 0 0 0 1;
-	ods output
-		parameterestimates = m31p&proc_group.
-		estimates          = m31c&proc_group.;
-run;
-
-proc genmod data = ys2&proc_group.;
-	class ethpop_broad4 (ref='White') period_year (ref='201920')  age_10 (ref = '50to59') gender (ref = 'F') / param=ref;
-	model observed = ethpop_broad4 period_year ethpop_broad4*period_year age_10 gender / dist=poisson link=log offset=log_pop;
-	estimate 'White 202122 v 201920' period_year 1 ethpop_broad4*period_year 0 0 0 0;
-	estimate 'Asian 202122 v 201920' period_year 1 ethpop_broad4*period_year 1 0 0 0;
-	estimate 'Black 202122 v 201920' period_year 1 ethpop_broad4*period_year 0 1 0 0;
-	estimate 'Mixed 202122 v 201920' period_year 1 ethpop_broad4*period_year 0 0 1 0;
-	estimate 'Other 202122 v 201920' period_year 1 ethpop_broad4*period_year 0 0 0 1;
-	ods output
-		parameterestimates = m32p&proc_group.
-		estimates          = m32c&proc_group.;
-run;
+/* proc genmod data = ys2&proc_group.; */
+/* 	class ethpop_broad4 (ref='White') period_year (ref='201920')  age_10 (ref = '50to59') gender (ref = 'F') / param=ref; */
+/* 	model observed = ethpop_broad4 period_year ethpop_broad4*period_year age_10 gender / dist=poisson link=log offset=log_pop; */
+/* 	estimate 'White 202122 v 201920' period_year 1 ethpop_broad4*period_year 0 0 0 0; */
+/* 	estimate 'Asian 202122 v 201920' period_year 1 ethpop_broad4*period_year 1 0 0 0; */
+/* 	estimate 'Black 202122 v 201920' period_year 1 ethpop_broad4*period_year 0 1 0 0; */
+/* 	estimate 'Mixed 202122 v 201920' period_year 1 ethpop_broad4*period_year 0 0 1 0; */
+/* 	estimate 'Other 202122 v 201920' period_year 1 ethpop_broad4*period_year 0 0 0 1; */
+/* 	ods output */
+/* 		parameterestimates = m32p&proc_group. */
+/* 		estimates          = m32c&proc_group.; */
+/* run ; */
 
 
 
