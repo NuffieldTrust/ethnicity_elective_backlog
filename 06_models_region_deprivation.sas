@@ -136,77 +136,74 @@ proc genmod data = rr2&proc_group.;
 
 run;
 
-proc genmod data = rs1&proc_group.;
-	class region (ref='East Midlands') period_year (ref='201920') age_10 (ref = '50to59') gender (ref = 'F')/ param=ref;
-	model observed = region period_year region*period_year age_10 gender/ dist=poisson link=log offset=log_pop;
-	estimate 'E Mids 2020/21 vs 2019/20'  period_year 1 region*period_year 0 0 0 0 0 0 0 0;
-	estimate 'East 2020/21 vs 2019/20'  period_year 1 region*period_year 1 0 0 0 0 0 0 0;
-	estimate 'London 2020/21 vs 2019/20'  period_year 1 region*period_year 0 1 0 0 0 0 0 0;
-	estimate 'N East 2020/21 vs 2019/20'  period_year 1 region*period_year 0 0 1 0 0 0 0 0;
-	estimate 'N West 2020/21 vs 2019/20'  period_year 1 region*period_year 0 0 0 1 0 0 0 0;
-	estimate 'S East 2020/21 vs 2019/20'  period_year 1 region*period_year 0 0 0 0 1 0 0 0;
-	estimate 'S West 2020/21 vs 2019/20'  period_year 1 region*period_year 0 0 0 0 0 1 0 0;
-	estimate 'W Mids 2020/21 vs 2019/20'  period_year 1 region*period_year 0 0 0 0 0 0 1 0;
-	estimate 'Yorks 2020/21 vs 2019/20'  period_year 1 region*period_year 0 0 0 0 0 0 0 1;
-	ods output
-		parameterestimates = rs1p&proc_group.
-		estimates          = rs1c&proc_group.;
+/* Alternate model specification which we explored but did not use */
+/* proc genmod data = rs1&proc_group.; */
+/* 	class region (ref='East Midlands') period_year (ref='201920') age_10 (ref = '50to59') gender (ref = 'F')/ param=ref; */
+/* 	model observed = region period_year region*period_year age_10 gender/ dist=poisson link=log offset=log_pop; */
+/* 	estimate 'E Mids 2020/21 vs 2019/20'  period_year 1 region*period_year 0 0 0 0 0 0 0 0; */
+/* 	estimate 'East 2020/21 vs 2019/20'  period_year 1 region*period_year 1 0 0 0 0 0 0 0; */
+/* 	estimate 'London 2020/21 vs 2019/20'  period_year 1 region*period_year 0 1 0 0 0 0 0 0; */
+/* 	estimate 'N East 2020/21 vs 2019/20'  period_year 1 region*period_year 0 0 1 0 0 0 0 0; */
+/* 	estimate 'N West 2020/21 vs 2019/20'  period_year 1 region*period_year 0 0 0 1 0 0 0 0; */
+/* 	estimate 'S East 2020/21 vs 2019/20'  period_year 1 region*period_year 0 0 0 0 1 0 0 0; */
+/* 	estimate 'S West 2020/21 vs 2019/20'  period_year 1 region*period_year 0 0 0 0 0 1 0 0; */
+/* 	estimate 'W Mids 2020/21 vs 2019/20'  period_year 1 region*period_year 0 0 0 0 0 0 1 0; */
+/* 	estimate 'Yorks 2020/21 vs 2019/20'  period_year 1 region*period_year 0 0 0 0 0 0 0 1; */
+/* 	ods output */
+/* 		parameterestimates = rs1p&proc_group. */
+/* 		estimates          = rs1c&proc_group.; */
+/* run; */
 
-run;
+/* proc genmod data = rs2&proc_group.; */
+/* 	class region (ref='East Midlands') period_year (ref='201920') age_10 (ref = '50to59') gender (ref = 'F')/ param=ref; */
+/* 	model observed = region period_year region*period_year age_10 gender/ dist=poisson link=log offset=log_pop; */
+/* 	estimate 'E Mids 2021/22 vs 2019/20'  period_year 1 region*period_year 0 0 0 0 0 0 0 0; */
+/* 	estimate 'East 2021/22 vs 2019/20'  period_year 1 region*period_year 1 0 0 0 0 0 0 0; */
+/* 	estimate 'London 2021/22 vs 2019/20'  period_year 1 region*period_year 0 1 0 0 0 0 0 0; */
+/* 	estimate 'N East 2021/22 vs 2019/20'  period_year 1 region*period_year 0 0 1 0 0 0 0 0; */
+/* 	estimate 'N West 2021/22 vs 2019/20'  period_year 1 region*period_year 0 0 0 1 0 0 0 0; */
+/* 	estimate 'S East 2021/22 vs 2019/20'  period_year 1 region*period_year 0 0 0 0 1 0 0 0; */
+/* 	estimate 'S West 2021/22 vs 2019/20'  period_year 1 region*period_year 0 0 0 0 0 1 0 0; */
+/* 	estimate 'W Mids 2021/22 vs 2019/20'  period_year 1 region*period_year 0 0 0 0 0 0 1 0; */
+/* 	estimate 'Yorks 2021/22 vs 2019/20'  period_year 1 region*period_year 0 0 0 0 0 0 0 1; */
+/* 	ods output */
+/* 		parameterestimates = rs2p&proc_group. */
+/* 		estimates          = rs2c&proc_group.; */
+/* run; */
 
-proc genmod data = rs2&proc_group.;
-	class region (ref='East Midlands') period_year (ref='201920') age_10 (ref = '50to59') gender (ref = 'F')/ param=ref;
-	model observed = region period_year region*period_year age_10 gender/ dist=poisson link=log offset=log_pop;
-	estimate 'E Mids 2021/22 vs 2019/20'  period_year 1 region*period_year 0 0 0 0 0 0 0 0;
-	estimate 'East 2021/22 vs 2019/20'  period_year 1 region*period_year 1 0 0 0 0 0 0 0;
-	estimate 'London 2021/22 vs 2019/20'  period_year 1 region*period_year 0 1 0 0 0 0 0 0;
-	estimate 'N East 2021/22 vs 2019/20'  period_year 1 region*period_year 0 0 1 0 0 0 0 0;
-	estimate 'N West 2021/22 vs 2019/20'  period_year 1 region*period_year 0 0 0 1 0 0 0 0;
-	estimate 'S East 2021/22 vs 2019/20'  period_year 1 region*period_year 0 0 0 0 1 0 0 0;
-	estimate 'S West 2021/22 vs 2019/20'  period_year 1 region*period_year 0 0 0 0 0 1 0 0;
-	estimate 'W Mids 2021/22 vs 2019/20'  period_year 1 region*period_year 0 0 0 0 0 0 1 0;
-	estimate 'Yorks 2021/22 vs 2019/20'  period_year 1 region*period_year 0 0 0 0 0 0 0 1;
-	ods output
-		parameterestimates = rs2p&proc_group.
-		estimates          = rs2c&proc_group.;
+/* proc genmod data = rs1&proc_group.; */
+/* 	class region (ref='East Midlands') period_year (ref='201920') / param=ref; */
+/* 	model observed = region period_year region*period_year / dist=poisson link=log offset=log_pop; */
+/* 	estimate 'E Mids 2020/21 vs 2019/20'  period_year 1 region*period_year 0 0 0 0 0 0 0 0; */
+/* 	estimate 'East 2020/21 vs 2019/20'  period_year 1 region*period_year 1 0 0 0 0 0 0 0; */
+/* 	estimate 'London 2020/21 vs 2019/20'  period_year 1 region*period_year 0 1 0 0 0 0 0 0; */
+/* 	estimate 'N East 2020/21 vs 2019/20'  period_year 1 region*period_year 0 0 1 0 0 0 0 0; */
+/* 	estimate 'N West 2020/21 vs 2019/20'  period_year 1 region*period_year 0 0 0 1 0 0 0 0; */
+/* 	estimate 'S East 2020/21 vs 2019/20'  period_year 1 region*period_year 0 0 0 0 1 0 0 0; */
+/* 	estimate 'S West 2020/21 vs 2019/20'  period_year 1 region*period_year 0 0 0 0 0 1 0 0; */
+/* 	estimate 'W Mids 2020/21 vs 2019/20'  period_year 1 region*period_year 0 0 0 0 0 0 1 0; */
+/* 	estimate 'Yorks 2020/21 vs 2019/20'  period_year 1 region*period_year 0 0 0 0 0 0 0 1; */
+/* 	ods output */
+/* 		parameterestimates = rt1p&proc_group. */
+/* 		estimates          = rt1c&proc_group.; */
+/* run; */
 
-run;
-
-proc genmod data = rs1&proc_group.;
-	class region (ref='East Midlands') period_year (ref='201920') / param=ref;
-	model observed = region period_year region*period_year / dist=poisson link=log offset=log_pop;
-	estimate 'E Mids 2020/21 vs 2019/20'  period_year 1 region*period_year 0 0 0 0 0 0 0 0;
-	estimate 'East 2020/21 vs 2019/20'  period_year 1 region*period_year 1 0 0 0 0 0 0 0;
-	estimate 'London 2020/21 vs 2019/20'  period_year 1 region*period_year 0 1 0 0 0 0 0 0;
-	estimate 'N East 2020/21 vs 2019/20'  period_year 1 region*period_year 0 0 1 0 0 0 0 0;
-	estimate 'N West 2020/21 vs 2019/20'  period_year 1 region*period_year 0 0 0 1 0 0 0 0;
-	estimate 'S East 2020/21 vs 2019/20'  period_year 1 region*period_year 0 0 0 0 1 0 0 0;
-	estimate 'S West 2020/21 vs 2019/20'  period_year 1 region*period_year 0 0 0 0 0 1 0 0;
-	estimate 'W Mids 2020/21 vs 2019/20'  period_year 1 region*period_year 0 0 0 0 0 0 1 0;
-	estimate 'Yorks 2020/21 vs 2019/20'  period_year 1 region*period_year 0 0 0 0 0 0 0 1;
-	ods output
-		parameterestimates = rt1p&proc_group.
-		estimates          = rt1c&proc_group.;
-
-run;
-
-proc genmod data = rs2&proc_group.;
-	class region (ref='East Midlands') period_year (ref='201920') / param=ref;
-	model observed = region period_year region*period_year / dist=poisson link=log offset=log_pop;
-	estimate 'E Mids 2021/22 vs 2019/20'  period_year 1 region*period_year 0 0 0 0 0 0 0 0;
-	estimate 'East 2021/22 vs 2019/20'  period_year 1 region*period_year 1 0 0 0 0 0 0 0;
-	estimate 'London 2021/22 vs 2019/20'  period_year 1 region*period_year 0 1 0 0 0 0 0 0;
-	estimate 'N East 2021/22 vs 2019/20'  period_year 1 region*period_year 0 0 1 0 0 0 0 0;
-	estimate 'N West 2021/22 vs 2019/20'  period_year 1 region*period_year 0 0 0 1 0 0 0 0;
-	estimate 'S East 2021/22 vs 2019/20'  period_year 1 region*period_year 0 0 0 0 1 0 0 0;
-	estimate 'S West 2021/22 vs 2019/20'  period_year 1 region*period_year 0 0 0 0 0 1 0 0;
-	estimate 'W Mids 2021/22 vs 2019/20'  period_year 1 region*period_year 0 0 0 0 0 0 1 0;
-	estimate 'Yorks 2021/22 vs 2019/20'  period_year 1 region*period_year 0 0 0 0 0 0 0 1;
-	ods output
-		parameterestimates = rt2p&proc_group.
-		estimates          = rt2c&proc_group.;
-
-run;
+/* proc genmod data = rs2&proc_group.; */
+/* 	class region (ref='East Midlands') period_year (ref='201920') / param=ref; */
+/* 	model observed = region period_year region*period_year / dist=poisson link=log offset=log_pop; */
+/* 	estimate 'E Mids 2021/22 vs 2019/20'  period_year 1 region*period_year 0 0 0 0 0 0 0 0; */
+/* 	estimate 'East 2021/22 vs 2019/20'  period_year 1 region*period_year 1 0 0 0 0 0 0 0; */
+/* 	estimate 'London 2021/22 vs 2019/20'  period_year 1 region*period_year 0 1 0 0 0 0 0 0; */
+/* 	estimate 'N East 2021/22 vs 2019/20'  period_year 1 region*period_year 0 0 1 0 0 0 0 0; */
+/* 	estimate 'N West 2021/22 vs 2019/20'  period_year 1 region*period_year 0 0 0 1 0 0 0 0; */
+/* 	estimate 'S East 2021/22 vs 2019/20'  period_year 1 region*period_year 0 0 0 0 1 0 0 0; */
+/* 	estimate 'S West 2021/22 vs 2019/20'  period_year 1 region*period_year 0 0 0 0 0 1 0 0; */
+/* 	estimate 'W Mids 2021/22 vs 2019/20'  period_year 1 region*period_year 0 0 0 0 0 0 1 0; */
+/* 	estimate 'Yorks 2021/22 vs 2019/20'  period_year 1 region*period_year 0 0 0 0 0 0 0 1; */
+/* 	ods output */
+/* 		parameterestimates = rt2p&proc_group. */
+/* 		estimates          = rt2c&proc_group.; */
+/* run; */
 
 
 
